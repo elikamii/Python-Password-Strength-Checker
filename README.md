@@ -1,2 +1,14 @@
 # Python-Password-Strength-Checker
-A simple Python security tool that evaluates the strength of a password based on its length and provides basic feedback to the use
+# Function to check basic password strength based on length
+def check_password_strength(password):
+    if len(password) >= 8:
+        return "Strong (based on length)"
+    else:
+        return "Weak (too short, must be 8+ characters)"
+
+# Test the function
+my_pass = "p@ss123"
+result = check_password_strength(my_pass)
+
+print(f"Password: {my_pass}")
+print(f"Strength: {result}")
