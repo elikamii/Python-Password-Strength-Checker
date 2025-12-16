@@ -1,14 +1,20 @@
-# Python-Password-Strength-Checker
-# Function to check basic password strength based on length
 def check_password_strength(password):
-    if len(password) >= 8:
-        return "Strong (based on length)"
+    """
+    Evaluates password strength based on length, 
+    presence of digits, and uppercase letters.
+    """
+    length_check = len(password) >= 8
+    digit_check = any(char.isdigit() for char in password)
+    upper_check = any(char.isupper() for char in password)
+
+    if length_check and digit_check and upper_check:
+        return "Strong ✅"
+    elif length_check and (digit_check or upper_check):
+        return "Moderate ⚠️ (Add more variety)"
     else:
-        return "Weak (too short, must be 8+ characters)"
+        return "Weak ❌ (Must be 8+ chars, include numbers and uppercase)"
 
-# Test the function
-my_pass = "p@ss123"
-result = check_password_strength(my_pass)
-
-print(f"Password: {my_pass}")
-print(f"Strength: {result}")
+# Test with a new password
+test_pass = "SecurePass2025"
+print(f"Testing Password: {test_pass}")
+print(f"Final Evaluation: {check_password_strength(test_pass)}")
